@@ -1,0 +1,41 @@
+.main-container {
+    display: flex;
+    margin: 20px 10px;
+    
+}
+.left-container {
+    padding: 100px 10px 0 100px;
+   flex-basis: 60%;
+}
+.heading {
+    font-size: 2rem;
+    font-weight: bolder;
+    color: #0f4c75;
+    margin: 0 0 ;
+    padding: 0 0;
+}
+.sub-heading {
+    font-size: 1.5rem;
+    color: grey;
+    margin: 0 0;
+    padding: 10px 0 50px 0;
+
+}
+.container-btn {
+    padding: 12px 20px;
+    border-radius: 10px;
+    background-color:#0f4c75;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;    
+    font-size: 20px;
+    font-weight: bold;
+}
+.right-container {
+    display: flex;
+    margin: 20px 0;
+}
+.right-container-image {
+    height: 500px;
+    width: 600px;
+}

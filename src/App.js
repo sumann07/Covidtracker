@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
+import Route from "./components/route/Route"
+import axios from "axios"
+import { getCookie, signout } from "./components/auth/Util";
+
+axios.defaults.baseURL = process.env.REACT_APP_SERVER_URL;
+axios.interceptors.request.use((config) => {
+  const token = getCookie("token");
+  config.headers.Authorization = token;
+
+  return config;
+});
+
+// null for success, and second parameter cllback for failure
+axios.interceptors.response.use(null, (error) => {
+  if (error.response.status === 401) {
+    signout(() => {
+      window.location.href = "/signin";
+    });
+  }
+
+  return Promise.reject(error);
+});
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+     
+       <Route />
+    </>
   );
 }
-
-export default App;
